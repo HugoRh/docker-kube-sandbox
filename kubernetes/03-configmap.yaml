@@ -2,6 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: docker-kube-sandbox
+  namespace: kube-sandbox
 data:
   sudoers: "## sudoers file.\n##\n## This file MUST be edited with the 'visudo' command
     as root.\n## Failure to use 'visudo' may result in syntax or file permission errors\n##

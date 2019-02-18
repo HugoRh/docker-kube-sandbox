@@ -1,18 +1,16 @@
-# docker-kube-sandbox
+# docker-kube-sandbox for RPI3
+Fork from [mchebitou/docker-kube-sandbox](https://github.com/mchebitou/docker-kube-sandbox)
 
-Docker in Docker image with shellinabox, kubectl and git based on docker image https://cloud.docker.com/repository/docker/mchebitou/docker-kube-sandbox
+Docker in Docker image with shellinabox, kubectl and git based on docker image https://cloud.docker.com/repository/docker/hrhein/docker-kube-sandbox
 
 ## Why?
 Recently I had to build a lab for initiating new users to the use of Docker and Kubernetes, I needed a quick way to give those users access to a ready to use environment with all the necessary tools and enough security to make sure they don't break anything.
 To make this image I took [fhuegli/docker-shellinabox](https://github.com/fhuegli/docker-shellinabox),
-rebased it on [Docker official image](https://hub.docker.com/_/docker) and adapted it to suit my need.
+rebased it on [Docker official image](https://hub.docker.com/r/arm32v6/docker/) and adapted it to suit my need.
 
 ## Install on Kubernetes
 
-    $ kubectl apply -f kubernetes/configmap.yaml
-    $ kubectl apply -f kubernetes/secret
-    $ kubectl apply -f kubernetes/deployment.yaml
-    $ kubectl apply -f kubernetes/service.yaml
+    $ kubectl apply -f kubernetes/
 
 Default credentials to be used for login are :
 

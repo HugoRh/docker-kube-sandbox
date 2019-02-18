@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/frontend-entry-points: https
+  name: kube-sandbox-ing
+  namespace: kube-sandbox
+spec:
+  rules:
+  - host: kube-sandbox.k8s.synology.me
+    http:
+      paths:
+      - backend:
+          serviceName: docker-kube-sandbox
+          servicePort: 4200

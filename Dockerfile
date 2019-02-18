@@ -1,4 +1,4 @@
-FROM docker:edge-git
+FROM arm32v6/docker
 
 ENV SIAB_USERCSS="Normal:+/etc/shellinabox/options-enabled/00+Black-on-White.css,Reverse:-/etc/shellinabox/options-enabled/00_White-On-Black.css;Colors:+/etc/shellinabox/options-enabled/01+Color-Terminal.css,Monochrome:-/etc/shellinabox/options-enabled/01_Monochrome.css" \
   SIAB_PORT=4200 \
@@ -16,14 +16,13 @@ ENV SIAB_USERCSS="Normal:+/etc/shellinabox/options-enabled/00+Black-on-White.css
   SIAB_SCRIPT=none
 
 ADD files/user-css.tar.gz /
-
 RUN echo 'http://dl-cdn.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositories && \
     chmod 755 /etc && \
     apk update && \
     apk upgrade && \
     apk add --update shadow util-linux pciutils coreutils binutils findutils grep bash bash-completion openssl curl openssh-client sudo shellinabox && rm -rf /var/cache/apk/* && \
     echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers && \
-    curl -o /usr/local/bin/kubectl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && chmod +x /usr/local/bin/kubectl && \
+    curl -o /usr/local/bin/kubectl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/arm/kubectl && chmod +x /usr/local/bin/kubectl && \
     apk add --no-cache python && \
     python -m ensurepip && \
     rm -r /usr/lib/python*/ensurepip && \

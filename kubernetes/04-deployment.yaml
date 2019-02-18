@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: docker-kube-sandbox
+  namespace: kube-sandbox
   labels:
     name: docker-kube-sandbox
 spec:
@@ -16,7 +17,7 @@ spec:
     spec:
       containers:
       - name: docker-kube-sandbox
-        image: mchebitou/docker-kube-sandbox:1.0.0
+        image: hrhein/docker-kube-sandbox:1.0.0
         imagePullPolicy: Always
         securityContext:
           privileged: true
